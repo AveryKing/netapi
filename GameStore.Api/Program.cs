@@ -46,7 +46,6 @@ var app = builder.Build();
 
 app.MapGet("/games", () => games);
 
-// get game by id
 app.MapGet("/games/{id}", (int id) =>
 {
     var game = games.Find(game => game.Id == id);
