@@ -1,5 +1,7 @@
 using GameStore.Api.Entities;
 
+const string GetGameEndpointName = "GetGame";
+
 List<Game> games = new()
 {
     new Game
@@ -50,5 +52,14 @@ app.MapGet("/games/{id}", (int id) =>
 {
     var game = games.Find(game => game.Id == id);
     return game is null ? Results.NotFound() : Results.Ok(game);
+}).WithName(GetGameEndpointName);
+
+app.MapPost("games", (Game game) =>
+{
+    game.Id = games.Max(g => g.Id) + 1;
+    games.Add(game);
+
+    return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game);
 });
+
 app.Run();
