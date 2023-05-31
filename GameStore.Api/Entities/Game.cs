@@ -6,7 +6,7 @@ public class Game
 {
     public int Id { get; set; }
 
-    [Required] public required string Name { get; set; }
+    [Required] [StringLength(50)] public required string Name { get; set; }
 
     public required string Genre { get; set; }
     public decimal Price { get; set; }
