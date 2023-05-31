@@ -28,6 +28,15 @@ List<Game> games = new()
         Price = 69.99M,
         ReleaseDate = new DateTime(2022, 9, 27),
         ImageUri = "https://placehold.co/100"
+    },
+    new Game
+    {
+        Id = 4,
+        Name = "YoWorld",
+        Genre = "MMO",
+        Price = 0.00M,
+        ReleaseDate = new DateTime(2008, 05, 01),
+        ImageUri = "https://placehold.co/100"
     }
 };
 
