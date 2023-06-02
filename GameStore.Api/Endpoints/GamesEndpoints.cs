@@ -1,4 +1,4 @@
-using GameStore.Api.Entities;
+ using GameStore.Api.Entities;
 using GameStore.Api.Repositories;
 
 namespace GameStore.Api.Endpoints;
