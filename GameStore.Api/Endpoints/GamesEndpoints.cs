@@ -21,23 +21,23 @@ public static class GamesEndpoints
 
         group.MapPost("/", (IGamesRepository repository, CreateGameDto gameDto) =>
         {
-            var game = gameDto.AsEntity(); 
+            var game = gameDto.AsEntity();
 
             repository.Create(game);
 
             return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game);
         });
 
-        group.MapPut("/{id}", (IGamesRepository repository, int id, Game updatedGame) =>
+        group.MapPut("/{id}", (IGamesRepository repository, int id, UpdateGameDto updatedGameDto) =>
         {
             var game = repository.Get(id);
             if (game is null) return Results.NotFound();
 
-            game.Name = updatedGame.Name;
-            game.Genre = updatedGame.Genre;
-            game.Price = updatedGame.Price;
-            game.ReleaseDate = updatedGame.ReleaseDate;
-            game.ImageUri = updatedGame.ImageUri;
+            game.Name = updatedGameDto.Name;
+            game.Genre = updatedGameDto.Genre;
+            game.Price = updatedGameDto.Price;
+            game.ReleaseDate = updatedGameDto.ReleaseDate;
+            game.ImageUri = updatedGameDto.ImageUri;
 
             repository.Update(game);
 
