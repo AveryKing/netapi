@@ -12,4 +12,16 @@ public static class EntityExtensions
             game.ReleaseDate,
             game.ImageUri);
     }
+
+    public static Game AsEntity(this CreateGameDto gameDto)
+    {
+        return new Game
+        {
+            Name = gameDto.Name,
+            Genre = gameDto.Genre,
+            Price = gameDto.Price,
+            ReleaseDate = gameDto.ReleaseDate,
+            ImageUri = gameDto.ImageUri
+        };
+    }
 }
